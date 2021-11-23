@@ -1,13 +1,13 @@
 <template>
    <div class="goods-list">
-       <goods-list-item v-for='item in goods' :key='item' :goodsItem='item'/>
+       <goods-list-item v-for='(item,index) in goods' :key='index' :goodsItem='item'/>
    </div>
 </template>
 
 <script >
 import GoodsListItem from './GoodsListItem.vue'
    export default {
-       name:'App' ,
+       name:'GoodsList' ,
        props:{
            goods:{
                type:Array,

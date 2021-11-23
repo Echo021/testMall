@@ -40,6 +40,7 @@
     line-height: 40px;
     text-align: center;
     font-size: 15px;
+    background-color: #fff;
 }
 .control-bar-item {
     flex:1;

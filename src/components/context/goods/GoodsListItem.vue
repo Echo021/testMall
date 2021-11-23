@@ -1,6 +1,6 @@
 <template>
-   <div class="goods-item">
-       <img :src="goodsItem.show.img" alt="">
+   <div class="goods-item" @click='itemClick'>
+       <img :src="goodsItem.show.img" alt="" @load='imageLoad'>
        <div class="goods-info">
            <p>{{goodsItem.title}}</p>
            <span class="price">{{goodsItem.price}}</span>
@@ -11,13 +11,23 @@
 
 <script >
    export default {
-       name:'App' ,
+       name:'GoodsListItem' ,
        props:{
            goodsItem:{
                type:Object,
                default(){
                    return {}
                }
+           }
+       },
+       methods:{
+           //vue通过@load来监听图片是否加载完成
+           imageLoad(){
+               //$bus称为事件总线，需要自定义 可以实现父孙之间或者更远关系的一个传递
+               this.$bus.$emit('imageLoad')
+           },
+           itemClick(){
+               this.$router.push('/detail/'+this.goodsItem.iid)
            }
        }
    }
